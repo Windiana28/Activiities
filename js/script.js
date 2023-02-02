@@ -56,6 +56,22 @@ function makeTodo(todoObject) {
     undoButton.addEventListener('click', function () {
       undoTaskFromCompleted(id);
     });
+
+    const trashButton = document.createElement('button');
+    trashButton.classList.add('trash-button');
+    trashButton.addEventListener('click', function () {
+      removeTaskFromCompleted(id);
+    });
+
+    container.append(undoButton, trashButton);
+  } else {
+    const checkButton = document.createElement('button');
+    checkButton.classList.add('check-button');
+    checkButton.addEventListener('click', function () {
+      addTaskToCompleted(id);
+    });
+
+    container.append(checkButton);
   }
   return container;
 }
