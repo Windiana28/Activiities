@@ -31,3 +31,31 @@ function findTodoIndex(todoId) {
   }
   return -1;
 }
+
+function makeTodo(todoObject) {
+  const { id, task, timestamp, isCompleted } = todoObject;
+
+  const textTitle = document.createElement('h2');
+  textTitle.innerText = task;
+
+  const textTimestamp = document.createElement('p');
+  textTimestamp.innerText = timestamp;
+
+  const textContainer = document.createElement('div');
+  textContainer.classList.add('inner');
+  textContainer.append(textTitle, textTimestamp);
+
+  const container = document.createElement('div');
+  container.classList.add('item', 'shadow');
+  container.append(textContainer);
+  container.setAttribute('id', `todo-${id}`);
+
+  if (isCompleted) {
+    const undoButton = document.createElement('button');
+    undoButton.classList.add('undo-button');
+    undoButton.addEventListener('click', function () {
+      undoTaskFromCompleted(id);
+    });
+  }
+  return container;
+}
