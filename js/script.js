@@ -75,3 +75,20 @@ function makeTodo(todoObject) {
   }
   return container;
 }
+
+function addTodo() {
+  const textTodo = document.getElementById('title').value;
+  const timestamp = document.getElementById('date').value;
+
+  const generatedID = generateId();
+  const todoObject = generateTodoObject(generatedID, textTodo, timestamp, false);
+  todos.push(todoObject);
+  document.dispatchEvent(new Event(RENDER_EVENT));
+}
+
+function addTaskToCompleted(todoId /* HTMLELement */) {
+  const todoTarget = findTodo(todoId);
+  if (todoTarget == null) return;
+  todoTarget.isCompleted = true;
+  document.dispatchEvent(new Event(RENDER_EVENT));
+}
