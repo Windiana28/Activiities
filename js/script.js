@@ -119,3 +119,20 @@ document.addEventListener('DOMContentLoaded', function () {
     addTodo();
   });
 });
+
+document.addEventListener(RENDER_EVENT, function () {
+  const uncompletedTODOList = document.getElementById('todos');
+  const listCompleted = document.getElementById('completed-todos');
+
+  uncompletedTODOList.innerHTML = '';
+  listCompleted.innerHTML = '';
+
+  for (const todoItem of todos) {
+    const todoElement = makeTodo(todoItem);
+    if (todoItem.isCompleted) {
+      listCompleted.append(todoElement);
+    } else {
+      uncompletedTODOList.append(todoElement);
+    }
+  }
+});
