@@ -92,3 +92,21 @@ function addTaskToCompleted(todoId /* HTMLELement */) {
   todoTarget.isCompleted = true;
   document.dispatchEvent(new Event(RENDER_EVENT));
 }
+
+function removeTaskFromCompleted(todoId /* HTMLELement */) {
+  const todoTarget = findTodoIndex(todoId);
+
+  if (todoTarget === -1) return;
+
+  todos.splice(todoTarget, 1);
+  document.dispatchEvent(new Event(RENDER_EVENT));
+}
+
+function undoTaskFromCompleted(todoId /* HTMLELement */) {
+  const todoTarget = findTodo(todoId);
+
+  if (todoTarget == null) return;
+
+  todoTarget.isCompleted = false;
+  document.dispatchEvent(new Event(RENDER_EVENT));
+}
