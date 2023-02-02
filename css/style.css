@@ -164,3 +164,27 @@ input[type="date"],
   background: url("../assets/undo.svg");
   background-size: contain;
 }
+
+check-button:focus,
+.trash-button {
+  outline: none;
+}
+
+@media only screen and (max-width: 1024px) {
+  .wrapper {
+    margin: 0;
+  }
+
+  .wrapper .container {
+    width: 100%;
+  }
+
+  .list-item {
+    width: 90%;
+  }
+
+  .form {
+    width: 100%;
+  }
+}
+
